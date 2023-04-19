@@ -1,85 +1,61 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div>
+    <PreLoader v-if="showPreLoader" />
+    <div v-if="!showPreLoader" class="texto">
+      <FistHeader />
+      <SecondHeader />
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
+<script>
+import FistHeader from './components/FistHeader.vue'
+import SecondHeader from './components/SecondHeader.vue'
+import PreLoader from './components/PreLoader.vue'
+
+export default {
+  name: 'App',
+  components: {
+    PreLoader,
+    FistHeader,
+    SecondHeader,
+  },
+  data() {
+    return {
+      showPreLoader: true
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showPreLoader = false
+    }, 5000);
+  }
+}
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.texto {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  animation: animacaoTexto 5s linear;
+  animation-fill-mode: forwards;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@keyframes animacaoTexto {
+  0% {
+    opacity: 0;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  25% {
+    opacity: 0.25;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  50% {
+    opacity: 0.5;
   }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
   }
 }
 </style>
