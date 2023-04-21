@@ -4,8 +4,10 @@
     <div v-if="!showPreLoader" class="texto">
       <FistHeader />
       <SecondHeader />
-      <div class="botao-flutuante" @click="showModal = !showModal"> <!-- Adicione o evento de clique aqui -->
-        <!-- <a href="https://api.whatsapp.com/send?phone=+5594991511806&text=Olá Borba! Gostaria de alugar um veículo." target="_blank" >Whatsapp</a> -->
+      <history-borba />
+      <location-map />
+      <nav-footer />
+      <div class="botao-flutuante" @click="showModal = !showModal"> 
         <a>Whatsapp</a>
       </div>
     </div>
@@ -23,7 +25,7 @@
         </span>
         <p>Pessoas disponíveis</p>
       </div>
-      <div class="section-message">
+      <div class="section-message" @click="submitMessage">
         <div class="image">
           <img width="70" src="https://scontent.fcks1-1.fna.fbcdn.net/v/t1.18169-9/20292794_1081665721964995_7255709146275695161_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_eui2=AeFVSvsUY9vXOYGoDroPIhctZml21c-rDbFmaXbVz6sNscXfvoMm66iD6yPwd64UVniINPuohwV2CvjukDltECnz&_nc_ohc=fo6iLfzI-YkAX_vfDj8&_nc_ht=scontent.fcks1-1.fna&oh=00_AfA-D5pWtjZPauEk3kXiexcvZ41sBu9G-yRPnDQcL4K3SA&oe=646828E8" alt="">
         </div>
@@ -68,6 +70,9 @@
 </template>
 
 <script>
+import NavFooter from './components/NavFooter.vue'
+import LocationMap from './components/LocationMap.vue'
+import HistoryBorba from './components/HistoryBorba.vue'
 import SecondHeader from './components/SecondHeader.vue'
 import FistHeader from './components/FistHeader.vue'
 import PreLoader from './components/PreLoader.vue'
@@ -78,6 +83,9 @@ export default {
     SecondHeader,
     FistHeader,
     PreLoader,
+    HistoryBorba,
+    LocationMap,
+    NavFooter,
   },
   data() {
     return {
@@ -89,6 +97,16 @@ export default {
     setTimeout(() => {
       this.showPreLoader = false
     }, 5000);
+  },
+  methods: {
+    // showModal() {
+    //   console.log('leonardo castro')
+    // },
+    submitMessage() {
+      console.log('leonardo castro')
+      // window.open('https://api.whatsapp.com/send?phone=+5594991511806&text=Olá Borba! Gostaria de alugar um veículo.', '_blank') -- Cleiton
+      // window.open('https://api.whatsapp.com/send?phone=+559491140302&text=Olá Borba! Gostaria de alugar um veículo.', '_blank') -- Eliane
+    }
   }
 }
 </script>
@@ -171,16 +189,15 @@ export default {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #fff;
-  box-shadow: 0 0 5px 1px #c2c2c2;
+  box-shadow: 0 0 5px 1px #848484;
   font-family: 'Poppins', sans-serif;
   color: #fff;
   border-radius: 10px;
   min-width: 350px;
-  
   height: 400px;
   z-index: 999;
 }

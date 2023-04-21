@@ -21,7 +21,7 @@ export default {
     font-family: 'Poppins', sans-serif;
     width: 100%;
     height: 100px;
-    background: linear-gradient(261deg, #141c40 0%, #0e237e 48%, #000620 100%);
+    background: linear-gradient(261deg, #2a3b89 0%, #0e237e 48%, #2a3b89 100%);
 }
 
 .header a {
