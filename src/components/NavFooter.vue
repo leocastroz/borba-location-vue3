@@ -8,7 +8,7 @@
                 <div class="description">
                    <div>
                         © Todos os Diretos Reservados - BORBA LOCAÇÕES
-                        Feito por Leonardo Castro
+                        Feito por <span>Leonardo Castro</span>
                    </div>
                    <div class="social-links">
                         <span class="material-symbols-outlined">
@@ -79,6 +79,10 @@ export default {
     font-size: 15px;
     color: #fff;
     font-weight: 500;
+}
+
+.container-footer .description span {
+    font-weight: 400;
 }
 .container-footer .description .social-links span {
     color: #a3a3a3;

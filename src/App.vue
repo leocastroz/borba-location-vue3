@@ -4,7 +4,9 @@
     <div v-if="!showPreLoader" class="texto">
       <FistHeader />
       <SecondHeader />
+      <services-borba />
       <history-borba />
+      <dados-recentes />
       <location-map />
       <nav-footer />
       <div class="botao-flutuante" @click="showModal = !showModal"> 
@@ -70,6 +72,8 @@
 </template>
 
 <script>
+import DadosRecentes from './components/DadosRecentes.vue'
+import ServicesBorba from './components/ServicesBorba.vue'
 import NavFooter from './components/NavFooter.vue'
 import LocationMap from './components/LocationMap.vue'
 import HistoryBorba from './components/HistoryBorba.vue'
@@ -86,6 +90,8 @@ export default {
     HistoryBorba,
     LocationMap,
     NavFooter,
+    ServicesBorba,
+    DadosRecentes,
   },
   data() {
     return {
